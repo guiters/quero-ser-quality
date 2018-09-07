@@ -39,7 +39,7 @@ It functions as an api incorporator where it is automatically interpreted throug
 
 By interpreting the pattern inside the .json file, it is possible to find several keys that make the whole process of connection and integrity of the data.
 
-**View the file `/backend/view/pattern/task`**
+**View the file `/backend/view/pattern/task.json`**
 
 ### Explanation:
 - The key (**drive**) is how that endpoint will have its data source
@@ -66,5 +66,7 @@ By interpreting the pattern inside the .json file, it is possible to find severa
 Open the file `/backend/model/drivers/server.config.json`
 Edit file with the connection data (IMPORTANT: **The key is the connections name in pattern file**)
 `host: "IPOFSERVER"`
+
 `username: "USEROFSERVER"`
+
 `password: "PASSWORDOFSERVER"`
