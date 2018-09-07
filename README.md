@@ -1,18 +1,70 @@
-# TO-DO List
+# Guilherme Camacho - Project presentation
 
-Esse teste consiste em criar uma lista de tarefas.  
-Os pré-requisitos são:
+### Hi, this is my test to join the quality team.
 
-- Permitir criar um tarefa, em forma de um card, com um titulo e uma breve descrição.
-- Permitir excluír a tarefa.
-- Permitir marcar a tarefa como concluída.
-- Incluir um filtro de status de tarefa (concluídas e pendentes).
-  
-A aplicação deverá ser separa em frontend e uma API Restful.
-Para o frontend, pode-se usar qualquer framework open source, preferencialmente ReactJS.
+## Front End
+#### ( directory `/frontend`)
+The frontend is developed in React JS in version 16.5
 
-Para a API, utilize PHP 7, com algum framework de sua preferência.
+#### There are 4 components.
+`/frontend/src/components`
+- App.js - main the project
+- Form.js - the form will create the task
+- List.js - the list contain all the task
+- Task.js - the task in self
 
-Não há a necessidade de persistir as informações em um banco de dados relacional como o MySQL, mas se achar necessário, será considerado um ponto importante.
+### `npm install` 
+This will be install all dependencies to project 
 
-Boa sorte.
+### `npm start`
+Runs the app in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The page will reload if you make edits.
+You will also see any lint errors in the console.
+
+### `npm run build`
+Builds the app for production to the `build` folder.
+It correctly bundles React in production mode and optimizes the build for the best performance.
+The build is minified and the filenames include the hashes.
+Your app is ready to be deployed!
+
+## Back End
+#### ( directory `/backend`)
+The backend of the project is done in a framework created by myself.
+What I call  [globalrestfull](https://github.com/guiters/globalrestful) you can find it on my github
+
+It functions as an api incorporator where it is automatically interpreted through a **.json** file.
+
+#### How it works?
+
+By interpreting the pattern inside the .json file, it is possible to find several keys that make the whole process of connection and integrity of the data.
+
+**View the file `/backend/view/pattern/task`**
+
+### Explanation:
+- The key (**drive**) is how that endpoint will have its data source
+- The key (**database**) the name of the database
+- The key (**connections**) the name of the connection that will be used with the database
+- The key (**table**) makes the direct connection with the table in the base
+- The array (**columns**) that lists all the columns within that table.
+- The key (**limitpage**) brings a complete pagination to the api in order to display only the amount informed
+ > To access the other pages just to enter the key (page = page number) in de URL as GET
+- The (**where**) can be two other objects (require and optional) these getting another object containing the column name as key and value as a [regex](https://medium.com/trainingcenter/entendendo-de-uma-vez-por-todas-express%C3%B5es-regulares-parte-7-66be1ac1f72d) to validate what is inserted inside that key.
+- And by the end the object (**requires**) that it brings a unique other called (REQUEST) this will contain all the modes of use of that endpoint within the standard REST
+	- GET = LIST CONTENT
+	- POST = CREATE CONTENT
+	- PUT = EDIT CONTENT
+	- DELETE = REMOVE CONTENT
+
+### PHP Server in development mode
+#### `php -S 0.0.0.0:8000` in directory of `/backend`
+
+### Mysql Server 
+#### `mysql DBNAME < /backend/mysqldump.sql`
+
+### Configure the api to connect with mysql
+Open the file `/backend/model/drivers/server.config.json`
+Edit file with the connection data (IMPORTANT: **The key is the connections name in pattern file**)
+`host: "IPOFSERVER"`
+`username: "USEROFSERVER"`
+`password: "PASSWORDOFSERVER"`

@@ -1,0 +1,31 @@
+{
+  "drive": "DriveMysql",
+  "database": "quality_test",
+  "connections": "local",
+  "table": "tasks",
+  "columns": [
+    "id",
+    "title",
+    "description",
+    "state",
+    "timestamp"
+  ],
+  "limitpage": "100",
+  "where": {
+    "optional": {
+      "id": "/^[a-zA-Z0-9]+$/",
+      "title": "/^[a-zA-Z0-9]+$/",
+      "description": "/^[a-zA-Z0-9]+$/",
+      "state": "/^[a-zA-Z0-9]+$/",
+      "timestamp": "/^[a-zA-Z0-9]+$/"
+    }
+  },
+  "requires": {
+    "REQUEST": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE"
+    ]
+  }
+}
