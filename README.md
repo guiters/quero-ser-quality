@@ -64,7 +64,11 @@ By interpreting the pattern inside the .json file, it is possible to find severa
 
 ### Configure the api to connect with mysql
 Open the file `/backend/model/drivers/server.config.json`
+
+
 Edit file with the connection data (IMPORTANT: **The key is the connections name in pattern file**)
+
+
 `host: "IPOFSERVER"`
 
 `username: "USEROFSERVER"`
