@@ -10,10 +10,56 @@ class App extends Component {
   state = {
     titleValue: "",
     decriptionValue: "",
-    todos: [
-      { id: 1, title: 'Descobrir a resposta para a vida', description: 'Estou procurando a resposta para a vida, o universo e tudo mais', state: false },
-      { id: 2, title: 'Ler mais livros', description: 'Ler o guia do mochileiro das galaxias', state: true }
-    ]
+    todos: [],
+    api: {
+      link: 'https://qualityapi.guilhermecamacho.com/task',
+      headers: new Headers({
+        'Authorization': 'Basic cXVhbGl0eTpXNyRzT1NTcEZzJHhlN1UhSzZSWiRYWVhpSDVkbWU='
+      })
+
+    }
+  }
+
+  constructor() {
+    super()
+    this.getTasks()
+  }
+
+  getTasks() {
+    return fetch(this.state.api.link, { method: 'GET', headers: this.state.api.headers })
+      .then((response) => response.json())
+      .then((todos) => this.setState({ todos }))
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  createTask(task) {
+    task.id = 0; //This will set id to zero in the api the id is auto incremented
+    return fetch(this.state.api.link, { method: 'POST', headers: this.state.api.headers, body: JSON.stringify(task) })
+      .then((response) => response.json())
+      .then((response) => { return response })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  editTask(task) {
+    return fetch(this.state.api.link + '?id=' + task.id, { method: 'PUT', headers: this.state.api.headers, body: JSON.stringify(task) })
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  removeTask(task) {
+    return fetch(this.state.api.link + '?id=' + task.id, { method: 'DELETE', headers: this.state.api.headers })
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   handleChangeTitle = (evt) => {
@@ -32,6 +78,10 @@ class App extends Component {
       description: this.state.decriptionValue,
       state: false
     }
+    const newTask = this.createTask(newTodo)
+    newTask.then(response => {
+      newTodo.id = response.RegistredID
+    })
     const todos = this.state.todos
     todos.push(newTodo)
     this.setState({ todos, titleValue: '', decriptionValue: '' })
@@ -43,14 +93,18 @@ class App extends Component {
       if (todos[i].id === id) {
         if (action === 'change') {
           todos[i].state = !todos[i].state
+          this.editTask(todos[i])
         }
         if (action === 'delete') {
+          this.removeTask(todos[i])
           todos.splice(i, 1)
         }
       }
     }
     this.setState({ todos })
   }
+
+
 
   render() {
     return (
