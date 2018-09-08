@@ -5,3 +5,51 @@
 .show-grid{
   margin-bottom: 40px;
 }
+
+.block{
+  width: 100%;
+  display: block;
+}
+.block label{
+  width: 33.499%;
+}
+
+
+.panel.panel-info .panel.panel-success{
+  -webkit-transition: width 2s; /* Safari */
+  transition: opacity 1s ease-out;
+}
+
+.display_1.panel.panel-success .display_1.panel.panel-info{
+  display: block;
+  -webkit-animation: fadeIn 1s;
+}
+
+.display_2.panel.panel-success{
+  display: block;
+  -webkit-animation: fadeIn 1s;
+}
+
+.display_2.panel.panel-info{
+  display: none;
+  opacity: 0; 
+}
+
+.display_3.panel.panel-info{
+  display: block;
+  -webkit-animation: fadeIn 1s;
+}
+
+.display_3.panel.panel-success{
+  display: none;
+  opacity: 0;
+}
+
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}  
+@keyframes fadeIn {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}

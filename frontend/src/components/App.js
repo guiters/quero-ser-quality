@@ -3,6 +3,7 @@ import './App.css';
 import Form from './Form'
 import List from './List'
 import { Grid, Row, Col } from 'react-bootstrap';
+import Filter from './Filter';
 
 
 class App extends Component {
@@ -16,13 +17,14 @@ class App extends Component {
       headers: new Headers({
         'Authorization': 'Basic cXVhbGl0eTpXNyRzT1NTcEZzJHhlN1UhSzZSWiRYWVhpSDVkbWU='
       })
-
-    }
+    },
+    filter: 1
   }
 
   constructor() {
     super()
     this.getTasks()
+    this.handleChangeFilter = this.handleChangeFilter.bind(this);
   }
 
   getTasks() {
@@ -60,6 +62,10 @@ class App extends Component {
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  handleChangeFilter(e) {
+    this.setState({ filter: e });
   }
 
   handleChangeTitle = (evt) => {
@@ -120,7 +126,14 @@ class App extends Component {
                   state={this.state} />
               </Row>
               <Row className="show-grid">
+                <Filter
+                  state={this.state.filter}
+                  handleChangeFilter={this.handleChangeFilter}
+                />
+              </Row>
+              <Row className="show-grid">
                 <List
+                  filter={this.state.filter}
                   handleClick={this.handleClick}
                   todos={this.state.todos} />
               </Row>

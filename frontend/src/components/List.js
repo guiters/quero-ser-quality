@@ -8,10 +8,11 @@ class List extends Component {
             <div className="List">
                 {this.props.todos.map((todo, index) => {
                     return (
-                        <Task 
-                        todo={todo}
-                        handleClick={this.props.handleClick}
-                        key={index} />
+                        <Task
+                            filter={this.props.filter}
+                            todo={todo}
+                            handleClick={this.props.handleClick}
+                            key={index} />
                     )
                 })}
             </div>

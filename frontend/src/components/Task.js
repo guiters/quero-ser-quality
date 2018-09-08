@@ -6,7 +6,7 @@ class Task extends Component {
     render() {
         return (
             <div className="Task">
-                <Panel bsStyle={this.props.todo.state ? 'success' : 'info'}>
+                <Panel className={'display_' + this.props.filter} bsStyle={this.props.todo.state ? 'success' : 'info'}>
                     <Panel.Heading>
                         <Panel.Title componentClass="h3">{this.props.todo.title}</Panel.Title>
                     </Panel.Heading>
