@@ -45,6 +45,12 @@
   opacity: 0;
 }
 
+.description, .panel-title{
+  word-wrap: break-word;      
+  white-space: -moz-pre-wrap; 
+  white-space: pre-wrap;     
+}
+
 @-webkit-keyframes fadeIn {
   from { opacity: 0; }
     to { opacity: 1; }

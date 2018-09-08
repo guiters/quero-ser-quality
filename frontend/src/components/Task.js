@@ -10,7 +10,7 @@ class Task extends Component {
                     <Panel.Heading>
                         <Panel.Title componentClass="h3">{this.props.todo.title}</Panel.Title>
                     </Panel.Heading>
-                    <Panel.Body>{this.props.todo.description}</Panel.Body>
+                    <Panel.Body className="description">{this.props.todo.description}</Panel.Body>
                     <Panel.Footer>
                         <Row className="show-grid">
                             <Col xs={3}>
